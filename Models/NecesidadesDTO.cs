@@ -29,17 +29,17 @@ namespace ApiHistorialNecesidades.Models
         public int Estado { get; set; }
         public Nullable<decimal> Valoracion { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Denuncias> Denuncias { get; set; }
-        public virtual Usuarios Usuarios { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NecesidadesDonacionesInsumos> NecesidadesDonacionesInsumos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NecesidadesDonacionesMonetarias> NecesidadesDonacionesMonetarias { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NecesidadesReferencias> NecesidadesReferencias { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NecesidadesValoraciones> NecesidadesValoraciones { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<Denuncias> Denuncias { get; set; }
+        //public virtual Usuarios Usuarios { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<NecesidadesDonacionesInsumos> NecesidadesDonacionesInsumos { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<NecesidadesDonacionesMonetarias> NecesidadesDonacionesMonetarias { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<NecesidadesReferencias> NecesidadesReferencias { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<NecesidadesValoraciones> NecesidadesValoraciones { get; set; }
 
 
 
@@ -71,14 +71,14 @@ namespace ApiHistorialNecesidades.Models
             Necesidades necesidadNueva = new Necesidades();
 
             necesidadNueva.Valoracion = this.Valoracion;
-            necesidadNueva.Usuarios = this.Usuarios;
-            necesidadNueva.TipoDonacion = this.TipoDonacion;
+            // necesidadNueva.Usuarios = this.Usuarios;
+            // necesidadNueva.TipoDonacion = this.TipoDonacion;
             necesidadNueva.TelefonoContacto = this.TelefonoContacto;
             necesidadNueva.Nombre = this.Nombre;
-            necesidadNueva.NecesidadesValoraciones = this.NecesidadesValoraciones;
-            necesidadNueva.NecesidadesReferencias = this.NecesidadesReferencias;
-            necesidadNueva.NecesidadesDonacionesMonetarias = this.NecesidadesDonacionesMonetarias;
-            necesidadNueva.NecesidadesDonacionesInsumos = this.NecesidadesDonacionesInsumos;
+            //necesidadNueva.NecesidadesValoraciones = this.NecesidadesValoraciones;
+            //necesidadNueva.NecesidadesReferencias = this.NecesidadesReferencias;
+            //necesidadNueva.NecesidadesDonacionesMonetarias = this.NecesidadesDonacionesMonetarias;
+            //necesidadNueva.NecesidadesDonacionesInsumos = this.NecesidadesDonacionesInsumos;
             necesidadNueva.IdUsuarioCreador = this.IdUsuarioCreador;
             necesidadNueva.IdNecesidad = this.IdNecesidad;
             necesidadNueva.Foto = this.Foto;
@@ -86,7 +86,7 @@ namespace ApiHistorialNecesidades.Models
             necesidadNueva.FechaCreacion = this.FechaCreacion;
             necesidadNueva.Estado = this.Estado;
             necesidadNueva.Descripcion = this.Descripcion;
-            necesidadNueva.Denuncias = this.Denuncias;
+            //necesidadNueva.Denuncias = this.Denuncias;
 
             return necesidadNueva;
         }
