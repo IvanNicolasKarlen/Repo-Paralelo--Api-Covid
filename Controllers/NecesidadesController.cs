@@ -1,4 +1,4 @@
-﻿using ApiHistorialNecesidades.Models;
+﻿using API.Models;
 using DAO;
 using DAO.Context;
 using Entidades;
@@ -9,7 +9,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace ApiHistorialNecesidades.Controllers
+namespace API.Controllers
 {
     public class NecesidadesController : ApiController
     {
@@ -26,10 +26,10 @@ namespace ApiHistorialNecesidades.Controllers
             int idSession = 2;
             List<Necesidades> listaNecesidades = necesidadesDAO.TraerTodasLasNecesidadesDelUsuario(idSession);
 
-            List<NecesidadesDTO> necesidadesDTO = NecesidadesDTO.mapeoListaADTO(listaNecesidades);
+            List<NecesidadesDTO> necesidadesDTO = NecesidadesDTO.MapearListaEF(listaNecesidades);
             return necesidadesDTO;
         }
 
-        
+
     }
 }

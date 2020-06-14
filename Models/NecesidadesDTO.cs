@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ApiHistorialNecesidades.Models
+namespace API.Models
 {
     public class NecesidadesDTO
     {
@@ -53,7 +53,7 @@ namespace ApiHistorialNecesidades.Models
             //this.NecesidadesValoraciones = necesidadesDTO.NecesidadesValoraciones;
             //this.NecesidadesReferencias = necesidadesDTO.NecesidadesReferencias;
             //this.NecesidadesDonacionesMonetarias = necesidadesDTO.NecesidadesDonacionesMonetarias;
-           // this.NecesidadesDonacionesInsumos = necesidadesDTO.NecesidadesDonacionesInsumos;
+            // this.NecesidadesDonacionesInsumos = necesidadesDTO.NecesidadesDonacionesInsumos;
             this.IdUsuarioCreador = necesidadesDTO.IdUsuarioCreador;
             this.IdNecesidad = necesidadesDTO.IdNecesidad;
             this.Foto = necesidadesDTO.Foto;
@@ -61,7 +61,7 @@ namespace ApiHistorialNecesidades.Models
             this.FechaCreacion = necesidadesDTO.FechaCreacion;
             this.Estado = necesidadesDTO.Estado;
             this.Descripcion = necesidadesDTO.Descripcion;
-           // this.Denuncias = necesidadesDTO.Denuncias;
+            // this.Denuncias = necesidadesDTO.Denuncias;
         }
 
 
@@ -92,7 +92,7 @@ namespace ApiHistorialNecesidades.Models
         }
 
 
-        public static List<NecesidadesDTO> mapeoListaADTO(List<Necesidades> necesidades)
+        public static List<NecesidadesDTO> MapearListaEF(List<Necesidades> necesidades)
         {
             List<NecesidadesDTO> necesidadesDTO = new List<NecesidadesDTO>();
 
@@ -107,6 +107,4 @@ namespace ApiHistorialNecesidades.Models
 
 
     }
-
-
 }
