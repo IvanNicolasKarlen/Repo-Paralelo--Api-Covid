@@ -13,6 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicios", "..\App 12-6(2)
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCovid19", "..\App 12-6(2)\App-Covid-19\WebCovid19\WebCovid19.csproj", "{58E20C6E-1CAF-4CBB-93CD-550E015E484A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoEmpty", "ProyectoEmpty\ProyectoEmpty.csproj", "{776A711C-C274-4A21-92AB-500D92B0270D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C5B70808-953E-4000-B45C-ADE70C156B2B} = {C5B70808-953E-4000-B45C-ADE70C156B2B}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +44,10 @@ Global
 		{58E20C6E-1CAF-4CBB-93CD-550E015E484A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58E20C6E-1CAF-4CBB-93CD-550E015E484A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58E20C6E-1CAF-4CBB-93CD-550E015E484A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{776A711C-C274-4A21-92AB-500D92B0270D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{776A711C-C274-4A21-92AB-500D92B0270D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{776A711C-C274-4A21-92AB-500D92B0270D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{776A711C-C274-4A21-92AB-500D92B0270D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

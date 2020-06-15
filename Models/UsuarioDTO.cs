@@ -22,11 +22,11 @@ namespace API.Models
         public bool Activo { get; set; }
         public string Token { get; set; }
 
-        public virtual ICollection<Denuncias> Denuncias { get; set; }
-        public virtual ICollection<DonacionesInsumos> DonacionesInsumos { get; set; }
-        public virtual ICollection<DonacionesMonetarias> DonacionesMonetarias { get; set; }
-        public virtual ICollection<Necesidades> Necesidades { get; set; }
-        public virtual ICollection<NecesidadesValoraciones> NecesidadesValoraciones { get; set; }
+        //public virtual ICollection<Denuncias> Denuncias { get; set; }
+        //public virtual ICollection<DonacionesInsumos> DonacionesInsumos { get; set; }
+        //public virtual ICollection<DonacionesMonetarias> DonacionesMonetarias { get; set; }
+        public virtual List<NecesidadesDTO> Necesidades { get; set; }
+        //public virtual ICollection<NecesidadesValoraciones> NecesidadesValoraciones { get; set; }
 
 
 
@@ -36,7 +36,7 @@ namespace API.Models
 
         }
 
-        public UsuarioDTO(UsuarioDTO usuario)
+        public UsuarioDTO(Usuarios usuario)
         {
             this.IdUsuario = usuario.IdUsuario;
             this.Nombre = usuario.Nombre;
@@ -50,7 +50,7 @@ namespace API.Models
             this.FechaCreacion = usuario.FechaCreacion;
             this.Activo = usuario.Activo;
             this.Token = usuario.Token;
-            //this.Necesidades = NecesidadesDTO.MapearListaEF(usuario.Necesidades.ToList(), false);
+            this.Necesidades = NecesidadesDTO.MapearListaEF(usuario.Necesidades.ToList(), false);
         }
 
         public Usuarios MapearEF()

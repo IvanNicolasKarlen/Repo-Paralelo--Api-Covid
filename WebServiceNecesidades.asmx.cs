@@ -2,10 +2,7 @@
 using DAO;
 using DAO.Context;
 using Entidades;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Services;
 
 namespace API
@@ -35,7 +32,7 @@ namespace API
             int idSession = 2;
             List<Necesidades> listaNecesidades = necesidadesDAO.TraerTodasLasNecesidadesDelUsuario(idSession);
 
-            List<NecesidadesDTO> necesidadesDTO = NecesidadesDTO.mapeoListaADTO(listaNecesidades);
+            List<NecesidadesDTO> necesidadesDTO = NecesidadesDTO.MapearListaEF(listaNecesidades);
             return necesidadesDTO;
         }
 

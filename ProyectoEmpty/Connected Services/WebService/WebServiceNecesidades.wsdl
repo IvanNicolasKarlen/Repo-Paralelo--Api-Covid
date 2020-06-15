@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="get">
+        <s:complexType />
+      </s:element>
+      <s:element name="getResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getResult" type="tns:ArrayOfNecesidadesDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfNecesidadesDTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NecesidadesDTO" nillable="true" type="tns:NecesidadesDTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NecesidadesDTO">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdNecesidad" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaCreacion" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaFin" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="TelefonoContacto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoDonacion" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Foto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdUsuarioCreador" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Valoracion" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuarios" type="tns:UsuarioDTO" />
+          <s:element minOccurs="0" maxOccurs="1" name="NecesidadesDonacionesInsumos" type="tns:ArrayOfNecesidadesDonacionesInsumosDTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UsuarioDTO">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdUsuario" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellido" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaNacimiento" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Foto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoUsuario" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaCreacion" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Activo" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Necesidades" type="tns:ArrayOfNecesidadesDTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfNecesidadesDonacionesInsumosDTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NecesidadesDonacionesInsumosDTO" nillable="true" type="tns:NecesidadesDonacionesInsumosDTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NecesidadesDonacionesInsumosDTO">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdNecesidadDonacionInsumo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdNecesidad" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Cantidad" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DonacionesInsumos" type="tns:ArrayOfDonacionesInsumos" />
+          <s:element minOccurs="0" maxOccurs="1" name="Necesidades" type="tns:Necesidades" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDonacionesInsumos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DonacionesInsumos" nillable="true" type="tns:DonacionesInsumos" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DonacionesInsumos">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdDonacionInsumo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdNecesidadDonacionInsumo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdUsuario" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Cantidad" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NecesidadesDonacionesInsumos" type="tns:NecesidadesDonacionesInsumos" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuarios" type="tns:Usuarios" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NecesidadesDonacionesInsumos">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdNecesidadDonacionInsumo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdNecesidad" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Cantidad" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DonacionesInsumos" type="tns:ArrayOfDonacionesInsumos" />
+          <s:element minOccurs="0" maxOccurs="1" name="Necesidades" type="tns:Necesidades" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Necesidades">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdNecesidad" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaCreacion" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaFin" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="TelefonoContacto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoDonacion" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Foto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdUsuarioCreador" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Valoracion" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Denuncias" type="tns:ArrayOfDenuncias" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuarios" type="tns:Usuarios" />
+          <s:element minOccurs="0" maxOccurs="1" name="NecesidadesDonacionesInsumos" type="tns:ArrayOfNecesidadesDonacionesInsumos" />
+          <s:element minOccurs="0" maxOccurs="1" name="NecesidadesDonacionesMonetarias" type="tns:ArrayOfNecesidadesDonacionesMonetarias" />
+          <s:element minOccurs="0" maxOccurs="1" name="NecesidadesReferencias" type="tns:ArrayOfNecesidadesReferencias" />
+          <s:element minOccurs="0" maxOccurs="1" name="NecesidadesValoraciones" type="tns:ArrayOfNecesidadesValoraciones" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDenuncias">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Denuncias" nillable="true" type="tns:Denuncias" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Denuncias">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdDenuncia" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdNecesidad" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdMotivo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comentarios" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdUsuario" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaCreacion" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="MotivoDenuncia" type="tns:MotivoDenuncia" />
+          <s:element minOccurs="0" maxOccurs="1" name="Necesidades" type="tns:Necesidades" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuarios" type="tns:Usuarios" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MotivoDenuncia">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdMotivoDenuncia" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Denuncias" type="tns:ArrayOfDenuncias" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Usuarios">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdUsuario" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellido" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaNacimiento" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Foto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoUsuario" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaCreacion" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Activo" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Denuncias" type="tns:ArrayOfDenuncias" />
+          <s:element minOccurs="0" maxOccurs="1" name="DonacionesInsumos" type="tns:ArrayOfDonacionesInsumos" />
+          <s:element minOccurs="0" maxOccurs="1" name="DonacionesMonetarias" type="tns:ArrayOfDonacionesMonetarias" />
+          <s:element minOccurs="0" maxOccurs="1" name="Necesidades" type="tns:ArrayOfNecesidades" />
+          <s:element minOccurs="0" maxOccurs="1" name="NecesidadesValoraciones" type="tns:ArrayOfNecesidadesValoraciones" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDonacionesMonetarias">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DonacionesMonetarias" nillable="true" type="tns:DonacionesMonetarias" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DonacionesMonetarias">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdDonacionMonetaria" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdNecesidadDonacionMonetaria" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdUsuario" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Dinero" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="ArchivoTransferencia" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaCreacion" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="NecesidadesDonacionesMonetarias" type="tns:NecesidadesDonacionesMonetarias" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuarios" type="tns:Usuarios" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NecesidadesDonacionesMonetarias">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdNecesidadDonacionMonetaria" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdNecesidad" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Dinero" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="CBU" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DonacionesMonetarias" type="tns:ArrayOfDonacionesMonetarias" />
+          <s:element minOccurs="0" maxOccurs="1" name="Necesidades" type="tns:Necesidades" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfNecesidades">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Necesidades" nillable="true" type="tns:Necesidades" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfNecesidadesValoraciones">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NecesidadesValoraciones" nillable="true" type="tns:NecesidadesValoraciones" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NecesidadesValoraciones">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdValoracion" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdUsuario" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdNecesidad" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Valoracion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Necesidades" type="tns:Necesidades" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuarios" type="tns:Usuarios" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfNecesidadesDonacionesInsumos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NecesidadesDonacionesInsumos" nillable="true" type="tns:NecesidadesDonacionesInsumos" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfNecesidadesDonacionesMonetarias">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NecesidadesDonacionesMonetarias" nillable="true" type="tns:NecesidadesDonacionesMonetarias" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfNecesidadesReferencias">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NecesidadesReferencias" nillable="true" type="tns:NecesidadesReferencias" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NecesidadesReferencias">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdReferencia" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdNecesidad" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Necesidades" type="tns:Necesidades" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getSoapIn">
+    <wsdl:part name="parameters" element="tns:get" />
+  </wsdl:message>
+  <wsdl:message name="getSoapOut">
+    <wsdl:part name="parameters" element="tns:getResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceNecesidadesSoap">
+    <wsdl:operation name="get">
+      <wsdl:input message="tns:getSoapIn" />
+      <wsdl:output message="tns:getSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceNecesidadesSoap" type="tns:WebServiceNecesidadesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="get">
+      <soap:operation soapAction="http://tempuri.org/get" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceNecesidadesSoap12" type="tns:WebServiceNecesidadesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="get">
+      <soap12:operation soapAction="http://tempuri.org/get" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceNecesidades">
+    <wsdl:port name="WebServiceNecesidadesSoap" binding="tns:WebServiceNecesidadesSoap">
+      <soap:address location="https://localhost:44341/WebServiceNecesidades.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceNecesidadesSoap12" binding="tns:WebServiceNecesidadesSoap12">
+      <soap12:address location="https://localhost:44341/WebServiceNecesidades.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

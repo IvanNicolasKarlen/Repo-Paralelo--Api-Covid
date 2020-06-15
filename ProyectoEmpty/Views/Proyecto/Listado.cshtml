@@ -1,0 +1,23 @@
+﻿@model ProyectoEmpty.WebService.NecesidadesDTO[]
+
+@{
+    ViewBag.Title = "Listado";
+}
+
+<h2>Listado</h2>
+
+
+@foreach (var dto in Model)
+{
+
+    <p>@dto.IdNecesidad</p>
+    <p>@dto.Nombre </p>
+
+    @*foreach (var item in @dto.NecesidadesDonacionesInsumos)
+    {
+        <p>@item.Nombre - @item.Cantidad</p>
+    }*@
+
+    <p> Nombre usuario: @dto.Usuarios.Nombre</p>
+}
+
