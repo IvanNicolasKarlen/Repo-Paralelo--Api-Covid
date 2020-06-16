@@ -160,25 +160,25 @@ namespace Servicios
             return necesidades;
         }
 
-        public List<Necesidades> obtener5NecesidadesMasValoradas()
-        {
-            List<Necesidades> listadoNecesidades = necesidadesDAO.ListarTodasLasNecesidadesActivas();
-            List<Necesidades> necesidadesMasValoradas = new List<Necesidades>();
-            int cantidad = (listadoNecesidades.Count >= 5) ? 5 : listadoNecesidades.Count;
-
-            foreach (var item in listadoNecesidades.OrderByDescending(n => n.Valoracion).ToList())
+            public List<Necesidades> obtener5NecesidadesMasValoradas()
             {
-                necesidadesMasValoradas.Add(item);
+                List<Necesidades> listadoNecesidades = necesidadesDAO.ListarTodasLasNecesidadesActivas();
+                List<Necesidades> necesidadesMasValoradas = new List<Necesidades>();
+                int cantidad = (listadoNecesidades.Count >= 5) ? 5 : listadoNecesidades.Count;
 
-                if (necesidadesMasValoradas.Count == cantidad)
+                foreach (var item in listadoNecesidades.OrderByDescending(n => n.Valoracion).ToList())
                 {
-                    break;
+                    necesidadesMasValoradas.Add(item);
+
+                    if (necesidadesMasValoradas.Count == cantidad)
+                    {
+                        break;
+                    }
                 }
+
+                return necesidadesMasValoradas;
+
             }
-
-            return necesidadesMasValoradas;
-
-        }
 
         public List<Necesidades> TraerNecesidadesQueNoSonDelUsuario(int idSession)
         {
@@ -186,13 +186,6 @@ namespace Servicios
 
             return necesidadesBD;
         }
-
-        public List<Necesidades> obtenerNecesidadesDenunciadas()
-        {
-            List<Necesidades> listaNecesidades = necesidadesDAO.obtenerNecesidadesDenunciadas();
-
-            return listaNecesidades;
-        }
     }
-}
+    }
 

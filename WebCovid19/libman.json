@@ -3,3 +3,84 @@
   "defaultProvider": "cdnjs",
   "libraries": []
 }
+
+
+
+
+
+
+
+
+/*
+
+ public NecesidadesDonacionesInsumosDTO()
+        {
+
+        }
+        public NecesidadesDonacionesInsumosDTO(NecesidadesDonacionesInsumos necesidadesDonacionesInsumosEF, bool mapearRelacionadas = true)
+        {
+            DonacionInsumosDTO donacionInsumosDTO = new DonacionInsumosDTO();
+
+            this.IdNecesidadDonacionInsumo = necesidadesDonacionesInsumosEF.IdNecesidadDonacionInsumo;
+            this.Nombre = necesidadesDonacionesInsumosEF.Nombre;
+            if (mapearRelacionadas && necesidadesDonacionesInsumosEF != null)
+            {
+                this.Necesidades = new NecesidadesDTO(necesidadesDonacionesInsumosEF.Necesidades);
+            }
+
+            if (necesidadesDonacionesInsumosEF.DonacionesInsumos.Count > 0)
+            {
+                 ICollection<DonacionInsumosDTO> listaDto = donacionInsumosDTO.MapearDTO(necesidadesDonacionesInsumosEF.DonacionesInsumos);
+
+                this.DonacionesInsumos = listaDto;
+            }
+
+        }
+
+
+        public NecesidadesDonacionesInsumos MapearEF()
+        {
+            NecesidadesDonacionesInsumos necesidades = new NecesidadesDonacionesInsumos();
+            DonacionInsumosDTO donacionInsumosDTO = new DonacionInsumosDTO();
+            
+            necesidades.IdNecesidadDonacionInsumo = this.IdNecesidadDonacionInsumo;
+            necesidades.Nombre = this.Nombre;
+            if (this.Necesidades != null)
+            {
+                necesidades.Necesidades = this.Necesidades.MapearEF();
+            }
+
+            necesidades.DonacionesInsumos = donacionInsumosDTO.MapearListEF(this.DonacionesInsumos);
+
+            return necesidades;
+
+        }
+
+        public static List<NecesidadesDonacionesInsumos> MapearListaDTO(List<NecesidadesDonacionesInsumosDTO> NecesidadesDonacionesInsumosDTO)
+        {
+            List<NecesidadesDonacionesInsumos> liNecesidadesDonacionesInsumosNecesidadesEF = new List<NecesidadesDonacionesInsumos>();
+
+            //mapeamos las necesidades a EF y las agregamos a la lista que quiero retornar
+            foreach (NecesidadesDonacionesInsumosDTO necesidadDonacionInsumoDTO in NecesidadesDonacionesInsumosDTO)
+            {
+                liNecesidadesDonacionesInsumosNecesidadesEF.Add(necesidadDonacionInsumoDTO.MapearEF());
+            }
+
+            return liNecesidadesDonacionesInsumosNecesidadesEF;
+        }
+
+        public static List<NecesidadesDonacionesInsumosDTO> MapearListaEF(List<NecesidadesDonacionesInsumos> NecesidadesDonacionesInsumosEF, bool mapearRelacionadas = true)
+        {
+            List<NecesidadesDonacionesInsumosDTO> necesidadesDonacionesInsumosDTO = new List<NecesidadesDonacionesInsumosDTO>();
+
+            //mapeamos las necesidades a DTO y las agregamos a la lista que quiero retornar
+            foreach (NecesidadesDonacionesInsumos necesidadDonacionInsumoEF in NecesidadesDonacionesInsumosEF)
+            {
+                necesidadesDonacionesInsumosDTO.Add(new NecesidadesDonacionesInsumosDTO(necesidadDonacionInsumoEF, mapearRelacionadas));
+            }
+
+            return necesidadesDonacionesInsumosDTO;
+        }
+
+
+*/

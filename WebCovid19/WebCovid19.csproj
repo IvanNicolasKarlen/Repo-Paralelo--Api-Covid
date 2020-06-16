@@ -1946,10 +1946,6 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\API\API.csproj">
-      <Project>{c5b70808-953e-4000-b45c-ade70c156b2b}</Project>
-      <Name>API</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DAO\DAO.csproj">
       <Project>{99f8eb88-bd40-4f85-b365-d889dc99372d}</Project>
       <Name>DAO</Name>

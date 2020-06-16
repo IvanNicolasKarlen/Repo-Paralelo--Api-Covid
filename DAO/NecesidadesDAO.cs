@@ -4,10 +4,6 @@ using System.Linq;
 using Entidades;
 using DAO.Abstract;
 using System.Data.Entity.Validation;
-
-using System.Net.Http;
-using System.Diagnostics.Eventing.Reader;
-
 using DAO.Context;
 using Entidades.Enum;
 
@@ -16,9 +12,9 @@ namespace DAO
     public class NecesidadesDAO : Crud<Necesidades>
     {
 
-        public NecesidadesDAO(TpDBContext context) :base(context)
+        public NecesidadesDAO(TpDBContext context) : base(context)
         {
-            
+
         }
         public override Necesidades ObtenerPorID(int idNecesidad)
         {
@@ -44,19 +40,44 @@ namespace DAO
 
         public List<Necesidades> TraerTodasLasNecesidadesDelUsuario(int idSession)
         {
-            List<Necesidades> todasLasNecesidadesDelUsuario = (from c in context.Necesidades
-                                                               where c.IdUsuarioCreador.Equals(idSession)
-                                                               where c.FechaFin > DateTime.Now
-                                                               select c).ToList();
 
-            return todasLasNecesidadesDelUsuario;
+            List<Necesidades> listadoNecesidades = new List<Necesidades>();
+
+            var listaObtenida = (from nec in context.Necesidades.
+                                 Include("Usuarios").
+                                 Include("Denuncias").
+                                 Include("NecesidadesDonacionesInsumos")
+                                 .Include("NecesidadesDonacionesMonetarias").
+                                 Include("NecesidadesReferencias")
+                                .Include("NecesidadesValoraciones")
+                                 where nec.FechaFin > DateTime.Now
+                                 where nec.IdUsuarioCreador.Equals(idSession)
+                                 select nec);
+
+            foreach (var item in listaObtenida)
+            {
+                listadoNecesidades.Add(item);
+            }
+
+            return listadoNecesidades;
+
+
+           
         }
 
         public List<Necesidades> ListarTodasLasNecesidades()
         {
-            List<Necesidades> listadoNecesidades = new List<Necesidades>();
 
-            var listaObtenida = (from nec in context.Necesidades
+            List<Necesidades> listadoNecesidades = new List<Necesidades>();
+            var listaObtenida = (from nec in context.Necesidades.
+                                 Include("Usuarios").
+                                 Include("Denuncias").
+                                 Include("NecesidadesDonacionesInsumos")
+                                  .Include("DonacionesInsumos")
+                                 .Include("NecesidadesDonacionesMonetarias").
+                                 Include("NecesidadesReferencias")
+                                 .Include("DonacionesMonetarias")
+                                .Include("NecesidadesValoraciones")
                                  where nec.FechaFin > DateTime.Now
                                  where nec.Estado == 1
                                  select nec);
@@ -159,12 +180,6 @@ namespace DAO
             }
 
             return listaNecesidades;
-        }
-
-        public List<Necesidades> obtenerNecesidadesDenunciadas()
-        {   
-            List<Necesidades> necesidadesBD = context.Necesidades.Where(o => o.Estado == (int)TipoEstadoNecesidad.Revision).ToList();
-            return necesidadesBD;
         }
     }
 }

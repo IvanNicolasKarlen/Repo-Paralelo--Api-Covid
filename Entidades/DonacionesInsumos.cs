@@ -9,9 +9,7 @@
 
 namespace Entidades
 {
-    using System;
-    using System.Collections.Generic;
-    
+
     public partial class DonacionesInsumos
     {
         public int IdDonacionInsumo { get; set; }
