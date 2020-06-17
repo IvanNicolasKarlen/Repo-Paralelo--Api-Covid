@@ -14,8 +14,7 @@ namespace WebApi.Models
         public string Nombre { get; set; }
         public int Cantidad { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-          public virtual ICollection<DonacionInsumosDTO> DonacionesInsumos { get; set; }
+        public virtual ICollection<DonacionInsumosDTO> DonacionesInsumos { get; set; }
         public virtual NecesidadesDTO Necesidades { get; set; }
 
         public NecesidadesDonacionesInsumosDTO()
@@ -28,6 +27,7 @@ namespace WebApi.Models
 
             this.IdNecesidadDonacionInsumo = necesidadesDonacionesInsumosEF.IdNecesidadDonacionInsumo;
             this.Nombre = necesidadesDonacionesInsumosEF.Nombre;
+            this.Cantidad = necesidadesDonacionesInsumosEF.Cantidad;
             if (mapearRelacionadas && necesidadesDonacionesInsumosEF != null)
             {
                 this.Necesidades = new NecesidadesDTO(necesidadesDonacionesInsumosEF.Necesidades);
@@ -40,35 +40,6 @@ namespace WebApi.Models
 
         }
 
-
-        public NecesidadesDonacionesInsumos MapearEF()
-        {
-            NecesidadesDonacionesInsumos necesidades = new NecesidadesDonacionesInsumos();
-            DonacionInsumosDTO donacionInsumosDTO = new DonacionInsumosDTO();
-            necesidades.IdNecesidadDonacionInsumo = this.IdNecesidadDonacionInsumo;
-            necesidades.Nombre = this.Nombre;
-            if (this.Necesidades != null)
-            {
-                necesidades.Necesidades = this.Necesidades.MapearEF();
-            }
-            necesidades.DonacionesInsumos = donacionInsumosDTO.MapearListEF(this.DonacionesInsumos);
-
-            return necesidades;
-
-        }
-
-        public static List<NecesidadesDonacionesInsumos> MapearListaDTO(List<NecesidadesDonacionesInsumosDTO> NecesidadesDonacionesInsumosDTO)
-        {
-            List<NecesidadesDonacionesInsumos> liNecesidadesDonacionesInsumosNecesidadesEF = new List<NecesidadesDonacionesInsumos>();
-
-            //mapeamos las necesidades a EF y las agregamos a la lista que quiero retornar
-            foreach (NecesidadesDonacionesInsumosDTO necesidadDonacionInsumoDTO in NecesidadesDonacionesInsumosDTO)
-            {
-                liNecesidadesDonacionesInsumosNecesidadesEF.Add(necesidadDonacionInsumoDTO.MapearEF());
-            }
-
-            return liNecesidadesDonacionesInsumosNecesidadesEF;
-        }
 
         public static List<NecesidadesDonacionesInsumosDTO> MapearListaEF(List<NecesidadesDonacionesInsumos> NecesidadesDonacionesInsumosEF, bool mapearRelacionadas = true)
         {

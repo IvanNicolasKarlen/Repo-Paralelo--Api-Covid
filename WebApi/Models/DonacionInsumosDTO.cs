@@ -100,12 +100,12 @@ namespace WebApi.Models
             {
                 DonacionesInsumos insumosDTO = new DonacionesInsumos();
 
-                insumosDTO.IdDonacionInsumo = this.IdDonacionInsumo;
-                insumosDTO.Cantidad = this.Cantidad;
-                insumosDTO.IdNecesidadDonacionInsumo = this.IdNecesidadDonacionInsumo;
-                insumosDTO.IdUsuario = this.IdUsuario;
-                insumosDTO.NecesidadesDonacionesInsumos = this.NecesidadesDonacionesInsumos;
-                insumosDTO.Usuarios = this.Usuarios;
+                insumosDTO.IdDonacionInsumo = donInsumos.IdDonacionInsumo;
+                insumosDTO.Cantidad = donInsumos.Cantidad;
+                insumosDTO.IdNecesidadDonacionInsumo = donInsumos.IdNecesidadDonacionInsumo;
+                insumosDTO.IdUsuario = donInsumos.IdUsuario;
+                insumosDTO.NecesidadesDonacionesInsumos = donInsumos.NecesidadesDonacionesInsumos;
+                insumosDTO.Usuarios = donInsumos.Usuarios;
 
                 listaDto.Add(insumosDTO);
             }

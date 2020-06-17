@@ -29,7 +29,7 @@ namespace WebApi.Models
         //public virtual ICollection<Denuncias> Denuncias { get; set; }
         public virtual UsuariosDTO UsuariosDTO { get; set; }
         public List<NecesidadesDonacionesInsumosDTO> NecesidadesDonacionesInsumos { get; set; }
-        //public virtual ICollection<NecesidadesDonacionesMonetarias> NecesidadesDonacionesMonetarias { get; set; }
+        public virtual List<NecesidadesDonacionesMonetariasDTO> NecesidadesDonacionesMonetarias { get; set; }
         //public virtual ICollection<NecesidadesReferencias> NecesidadesReferencias { get; set; }
         //public virtual ICollection<NecesidadesValoraciones> NecesidadesValoraciones { get; set; }
 
@@ -56,6 +56,7 @@ namespace WebApi.Models
                 this.UsuariosDTO = new UsuariosDTO(necesidadesEntidad.Usuarios);
             }
             this.NecesidadesDonacionesInsumos = NecesidadesDonacionesInsumosDTO.MapearListaEF(necesidadesEntidad.NecesidadesDonacionesInsumos.ToList(), false);
+            this.NecesidadesDonacionesMonetarias = NecesidadesDonacionesMonetariasDTO.MapearListaEF(necesidadesEntidad.NecesidadesDonacionesMonetarias.ToList(), false);
         }
 
         //mapeamos necesidades DTO a necesidades EF}

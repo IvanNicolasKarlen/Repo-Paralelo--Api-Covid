@@ -2,9 +2,12 @@
 using Entidades;
 using Entidades.Enum;
 using Entidades.Views;
+using Newtonsoft.Json;
 using Servicios;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
 using System.Web.Mvc;
 using WebCovid19.Filters;
 using WebCovid19.Utilities;
@@ -34,7 +37,7 @@ namespace WebCovid19.Controllers
             return View(listaNecesidades);
         }
 
-      
+
 
         public ActionResult Salir()
         {
@@ -222,7 +225,7 @@ namespace WebCovid19.Controllers
             TipoUsuario tipoUsuario = servicioUsuario.tipoDeUsuario(u);
             if (tipoUsuario == TipoUsuario.Usuario)
             {
-                return RedirectToAction("Home","Necesidades");
+                return RedirectToAction("Home", "Necesidades");
             }
             else
             {
@@ -335,7 +338,7 @@ namespace WebCovid19.Controllers
             string boton = (Request.Form["Like"] != null) ? "Like" : (Request.Form["Dislike"] != null) ? "Dislike" : null;
             LikeOrDislike likeOrDislike = new LikeOrDislike();
             bool estado = likeOrDislike.AgregaLikeOrDislike(idSession, boton, idNecesidad, servicioValoraciones);
-            return RedirectToAction("Home" , "Necesidades");
+            return RedirectToAction("Home", "Necesidades");
         }
 
 
@@ -376,6 +379,53 @@ namespace WebCovid19.Controllers
         {
             return View();
         }
+
+
+
+        public ActionResult HistorialDonaciones()
+        {
+            var client = new WebClient();
+
+            int idSession = 4;
+           // List<Necesidades> listadoNecesidades = ListadoNecesidadesDesdeApiRest(idSession);
+            VMNecesidades listadoNecesidades = ListadoNecesidadesDesdeApiRest(idSession);
+           
+            return View(listadoNecesidades);
+        }
+
+
+
+        private VMNecesidades ListadoNecesidadesDesdeApiRest(int idSession)
+        {
+            
+            var url = $"https://localhost:44352/api/Necesidades?id=" + idSession + "";
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "GET";
+            request.ContentType = "application/json";
+            request.Accept = "application/json";
+
+
+            using(WebResponse response = request.GetResponse())
+            {
+                using (Stream strReader = response.GetResponseStream())
+                {
+                    if (strReader == null) return null;
+                    using (StreamReader objReader = new StreamReader(strReader))
+                    {
+
+                        string responseBody = objReader.ReadToEnd();
+                        //Lo deserealiza a tipo List<Necesidades>
+                        var result = JsonConvert.DeserializeObject<VMNecesidades>(responseBody);
+                        return result;
+
+                    }
+
+                }
+
+            }
+
+        }
+
 
 
     }

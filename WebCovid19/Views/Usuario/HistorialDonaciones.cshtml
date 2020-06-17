@@ -1,0 +1,61 @@
+﻿@model List<Entidades.Necesidades>
+@{
+    ViewBag.Title = "Historial";
+    Layout = "~/Views/Shared/_NecesidadesLayout.cshtml";
+    int idSession = 2;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HistorialDonaciones</title>
+</head>
+<body>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Fecha de donacion</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Tipo de Donacion</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Recaudado</th>
+                <th scope="col">Mi Donacion</th>
+            </tr>
+        </thead>
+        @foreach (var necesidad in Model)
+        {
+
+            foreach (var insumos in @necesidad.NecesidadesDonacionesInsumos)
+            {
+
+                if (@insumos.DonacionesInsumos != null)
+                {
+                    foreach (var donacionInsumos in @insumos.DonacionesInsumos)
+                    {
+
+
+
+                        <tbody>
+                            <tr>
+
+                                <td>@necesidad.FechaCreacion</td>
+                                <td>@necesidad.Nombre</td>
+                                <td>@necesidad.TipoDonacion</td>
+                                <td>@necesidad.Estado</td>
+                                <td>@insumos.Nombre (@donacionInsumos.Cantidad)</td>
+                                <td>@insumos.Nombre (@donacionInsumos.Cantidad)</td>
+                                
+                            </tr>
+                        </tbody>
+
+
+
+                    }
+                }
+            }
+        }
+    </table>
+    </body>
+</html>

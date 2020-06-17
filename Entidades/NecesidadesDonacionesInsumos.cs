@@ -17,7 +17,7 @@ namespace Entidades
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NecesidadesDonacionesInsumos()
         {
-            this.DonacionesInsumos = new List<DonacionesInsumos>();
+            this.DonacionesInsumos = new HashSet<DonacionesInsumos>();
         }
     
         public int IdNecesidadDonacionInsumo { get; set; }
@@ -26,7 +26,7 @@ namespace Entidades
         public int Cantidad { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual List<DonacionesInsumos> DonacionesInsumos { get; set; }
+        public virtual ICollection<DonacionesInsumos> DonacionesInsumos { get; set; }
         public virtual Necesidades Necesidades { get; set; }
     }
 }

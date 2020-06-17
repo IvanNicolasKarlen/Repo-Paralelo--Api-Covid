@@ -117,6 +117,7 @@
     <Compile Include="Views\VMDatosDeVerificacionDeUsuario.cs" />
     <Compile Include="Views\VMDonacionMonetaria.cs" />
     <Compile Include="Views\VMLogin.cs" />
+    <Compile Include="Views\VMNecesidades.cs" />
     <Compile Include="Views\VMPerfil.cs" />
     <Compile Include="Views\VMPublicacion.cs" />
     <Compile Include="Views\VMReenvioDeEmail.cs" />

@@ -118,10 +118,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DonacionesMonetariasDTO.cs" />
     <Compile Include="Models\DonacionInsumosDTO.cs" />
     <Compile Include="Models\NecesidadesDonacionesInsumosDTO.cs" />
+    <Compile Include="Models\NecesidadesDonacionesMonetariasDTO.cs" />
     <Compile Include="Models\NecesidadesDTO.cs" />
     <Compile Include="Models\UsuariosDTO.cs" />
+    <Compile Include="Models\VMNecesidades.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +157,9 @@
       <Project>{58e20c6e-1caf-4cbb-93cd-550e015e484a}</Project>
       <Name>WebCovid19</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
