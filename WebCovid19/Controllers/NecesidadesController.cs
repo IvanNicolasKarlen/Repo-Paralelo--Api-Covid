@@ -24,10 +24,10 @@ namespace WebCovid19.Controllers
         public NecesidadesController()
         {
             TpDBContext context = new TpDBContext();
-             servicioNecesidad = new ServicioNecesidad(context);
-             servicioInsumo = new ServicioNecesidadesInsumos(context);
-             servicioMonetaria = new ServicioNecesidadesMonetarias(context);
-             servicioNecesidadValoraciones = new ServicioNecesidadValoraciones(context);
+            servicioNecesidad = new ServicioNecesidad(context);
+            servicioInsumo = new ServicioNecesidadesInsumos(context);
+            servicioMonetaria = new ServicioNecesidadesMonetarias(context);
+            servicioNecesidadValoraciones = new ServicioNecesidadValoraciones(context);
 
         }
 
@@ -40,7 +40,7 @@ namespace WebCovid19.Controllers
 
 
         public ActionResult Crear()
-        { 
+        {
 
             NecesidadesMetadata necesidadesMetadata = new NecesidadesMetadata();
             return View(necesidadesMetadata);
@@ -63,11 +63,11 @@ namespace WebCovid19.Controllers
                     vmnecesidad.Foto = pathRelativoImagen;
                 }
                 int idUsuario = int.Parse(Session["UserId"].ToString());
-                Necesidades necesidad = servicioNecesidad.buildNecesidad(vmnecesidad, idUsuario); 
+                Necesidades necesidad = servicioNecesidad.buildNecesidad(vmnecesidad, idUsuario);
                 TempData["idNecesidad"] = necesidad.IdNecesidad;
                 if (Enum.GetName(typeof(TipoDonacion), vmnecesidad.TipoDonacion) == "Insumos")
                 {
-                    return View("Insumos"); 
+                    return View("Insumos");
                 }
                 else
                 {
@@ -85,7 +85,7 @@ namespace WebCovid19.Controllers
             int idNecesidad = int.Parse(s);
             insumos.Necesidades = servicioNecesidad.obtenerNecesidadPorId(idNecesidad);
             return View(insumos);
-        }            
+        }
 
         [HttpPost]
         public ActionResult Insumos(NecesidadesDonacionesInsumosMetadata insumos)
@@ -100,7 +100,7 @@ namespace WebCovid19.Controllers
         }
 
         public ActionResult Monetaria()
-        {   
+        {
             NecesidadesDonacionesMonetarias monetaria = new NecesidadesDonacionesMonetarias();
             string s = TempData["idNecesidad"].ToString();
             int idNecesidad = int.Parse(s);
@@ -121,17 +121,17 @@ namespace WebCovid19.Controllers
 
         [LoginFilter]//toDo: Probar que funcione bien del todo este action.
         public ActionResult DetalleNecesidad(int idNecesidad)
-        { 
+        {
             int idSession = int.Parse(Session["UserId"].ToString());
             /***************************** Like or Dislike *************************/
             /*Si recibe un Like or dislike desde la vista DetalleNecesidad viene para acá*/
-           if(Request.Form["Like"]!=null | (Request.Form["Dislike"] != null))
+            if (Request.Form["Like"] != null | (Request.Form["Dislike"] != null))
             {
                 string boton = (Request.Form["Like"] != null) ? "Like" : (Request.Form["Dislike"] != null) ? "Dislike" : null;
                 LikeOrDislike likeOrDislike = new LikeOrDislike();
                 bool estado = likeOrDislike.AgregaLikeOrDislike(idSession, boton, idNecesidad, servicioNecesidadValoraciones);
             }
-            
+
             /**********************************************************************/
             VMPublicacion vMPublicacion = new VMPublicacion();
             Necesidades necesidadObtenida = servicioNecesidad.obtenerNecesidadPorId(idNecesidad);
@@ -142,9 +142,9 @@ namespace WebCovid19.Controllers
                 NecesidadesDonacionesMonetarias necDonacionObtenida = servicioMonetaria.obtenerPorIdNecesidad(idNecesidad);
                 vMPublicacion.necesidadesDonacionesMonetarias = necDonacionObtenida;
             }
-            else if(necesidadObtenida.TipoDonacion == 2)//Insumos
+            else if (necesidadObtenida.TipoDonacion == 2)//Insumos
             {
-               NecesidadesDonacionesInsumos insumosObtenidos = servicioInsumo.obtenerPorIdNecesidad(idNecesidad);
+                NecesidadesDonacionesInsumos insumosObtenidos = servicioInsumo.obtenerPorIdNecesidad(idNecesidad);
                 vMPublicacion.necesidadesDonacionesInsumos = insumosObtenidos;
             }
             vMPublicacion.necesidad = necesidadObtenida;

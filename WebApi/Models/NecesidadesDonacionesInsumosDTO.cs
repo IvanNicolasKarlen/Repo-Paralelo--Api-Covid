@@ -35,11 +35,7 @@ namespace WebApi.Models
 
             if (necesidadesDonacionesInsumosEF.DonacionesInsumos.Count > 0)
             {
-                foreach (var donInsumos in necesidadesDonacionesInsumosEF.DonacionesInsumos)
-                {
-                    this.DonacionesInsumos = donacionInsumosDTO.MapearDTO(necesidadesDonacionesInsumosEF.DonacionesInsumos);
-                }
-
+               this.DonacionesInsumos = donacionInsumosDTO.MapearDTO(necesidadesDonacionesInsumosEF.DonacionesInsumos);
             }
 
         }

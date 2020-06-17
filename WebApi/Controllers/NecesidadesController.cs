@@ -30,9 +30,6 @@ namespace WebApi.Controllers
             int idSession = 2;
             List<Necesidades> listaNecesidadesEF = necesidadesDAO.TraerTodasLasNecesidadesDelUsuario(idSession);
 
-            //lista que obtengo de la bd
-            // List<Necesidades> listaNecesidadesEF = necesidadServicio.ListarTodasLasNecesidades();
-
             //devuelve una lista de necesidades DTO
             return NecesidadesDTO.MapearListaEF(listaNecesidadesEF);
         }

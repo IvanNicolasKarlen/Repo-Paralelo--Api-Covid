@@ -50,18 +50,18 @@ namespace WebApi.Models
         }
 
 
-        public DonacionInsumosDTO MapearDTO(DonacionInsumosDTO donacion)
+        public DonacionInsumosDTO MapearDTO(DonacionesInsumos donacion)
         {
-            
+            DonacionInsumosDTO donacionDTO = new DonacionInsumosDTO();
 
-            donacion.IdDonacionInsumo = this.IdDonacionInsumo;
-            donacion.Cantidad = this.Cantidad;
-            donacion.IdNecesidadDonacionInsumo = this.IdNecesidadDonacionInsumo;
-            donacion.IdUsuario = this.IdUsuario;
-            donacion.NecesidadesDonacionesInsumos = this.NecesidadesDonacionesInsumos;
-            donacion.Usuarios = this.Usuarios;
+            donacionDTO.IdDonacionInsumo = donacion.IdDonacionInsumo;
+            donacionDTO.Cantidad = donacion.Cantidad;
+            donacionDTO.IdNecesidadDonacionInsumo = donacion.IdNecesidadDonacionInsumo;
+            donacionDTO.IdUsuario = donacion.IdUsuario;
+            //donacionDTO.NecesidadesDonacionesInsumos = donacion.NecesidadesDonacionesInsumos;
+            //donacionDTO.Usuarios = donacion.Usuarios;
 
-            return donacion;
+            return donacionDTO;
 
         }
 
@@ -72,21 +72,18 @@ namespace WebApi.Models
 
             foreach (var donInsumos in donacionesInsumos)
             {
-                this.IdDonacionInsumo = donInsumos.IdDonacionInsumo;
-                this.Cantidad = donInsumos.Cantidad;
-                this.IdNecesidadDonacionInsumo = donInsumos.IdNecesidadDonacionInsumo;
-                this.IdUsuario = donInsumos.IdUsuario;
-               // this.NecesidadesDonacionesInsumos = donInsumos.NecesidadesDonacionesInsumos;
-                this.Usuarios = donInsumos.Usuarios;
+                //Le paso los objetos DonacionesInsumos EF y obtengo un objeto DTO
+               DonacionInsumosDTO donacionDTO = MapearDTO(donInsumos);
 
+                //Objeto para agregar a la lista
                 DonacionInsumosDTO insumosDTO = new DonacionInsumosDTO();
 
-                insumosDTO.IdDonacionInsumo = this.IdDonacionInsumo;
-                insumosDTO.Cantidad = this.Cantidad;
-                insumosDTO.IdNecesidadDonacionInsumo = this.IdNecesidadDonacionInsumo;
-                insumosDTO.IdUsuario = this.IdUsuario;
+                insumosDTO.IdDonacionInsumo = donacionDTO.IdDonacionInsumo;
+                insumosDTO.Cantidad = donacionDTO.Cantidad;
+                insumosDTO.IdNecesidadDonacionInsumo = donacionDTO.IdNecesidadDonacionInsumo;
+                insumosDTO.IdUsuario = donacionDTO.IdUsuario;
                //insumosDTO.NecesidadesDonacionesInsumos = this.NecesidadesDonacionesInsumos;
-                insumosDTO.Usuarios = this.Usuarios;
+                //insumosDTO.Usuarios = donacionDTO.Usuarios;
 
                 listaDto.Add(insumosDTO);
             }
